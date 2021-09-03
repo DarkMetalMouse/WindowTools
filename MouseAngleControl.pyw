@@ -1,3 +1,8 @@
+'''
+Move the curser in a straight line with a certain angle determined by a GUI
+Change the constants to fit your preferred key bindings
+'''
+
 from utils.TransparentWindow import TransparentWindow
 import keyboard
 import mouse
@@ -5,6 +10,12 @@ import tkinter as tk
 from time import time, sleep
 from math import radians, cos, sin
 
+TOGGLE_WINDOW_KEY = 'f15'
+INCREASE_ANGLE_KEY = 'f17'
+DECREASE_ANGLE_KEY = 'f18'
+MOVE_FORWARD_KEY = 'f19'
+MOVE_BACKWARDS_KEY = 'f20'
+MODIFIER_KEY = 'ctrl'
 
 class BriefWindow(TransparentWindow):
     def __init__(self, time_to_live: int, geometry: tuple = (1800,920,100,100)) -> None:
@@ -110,11 +121,11 @@ TIME_TO_LIVE = 2000  # ms
 window = BriefWindow(TIME_TO_LIVE)
 deg = 0
 virtualpos = list(mouse.get_position())
-f15 = KeyHandler('f15')
-f17 = KeyHandler('f17')
-f18 = KeyHandler('f18')
-f19 = KeyHandler('f19')
-f20 = KeyHandler('f20')
+f15 = KeyHandler(TOGGLE_WINDOW_KEY)
+f17 = KeyHandler(INCREASE_ANGLE_KEY)
+f18 = KeyHandler(DECREASE_ANGLE_KEY)
+f19 = KeyHandler(MOVE_FORWARD_KEY)
+f20 = KeyHandler(MOVE_BACKWARDS_KEY)
 
 while True:
     if f15.is_pressed():
@@ -128,10 +139,10 @@ while True:
             window.set_ttl(-1)
             window.set_display_value(deg)
     if f17.is_pressed():
-        deg = (deg + (45 if keyboard.is_pressed("ctrl") else 5)) % 360
+        deg = (deg + (45 if keyboard.is_pressed(MODIFIER_KEY) else 5)) % 360
         window.set_display_value(str(deg))
     elif f18.is_pressed():
-        deg = (deg - (45 if keyboard.is_pressed("ctrl") else 5)) % 360
+        deg = (deg - (45 if keyboard.is_pressed(MODIFIER_KEY) else 5)) % 360
         window.set_display_value(str(deg))
 
     if f19.is_pressed():

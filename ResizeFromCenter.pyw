@@ -1,3 +1,7 @@
+'''
+When pressing ctrl while resizing a window, the window will be resized from it's center
+'''
+
 from time import sleep
 import keyboard
 # import mouse # was too slow / unreliable. used win32api directly instead

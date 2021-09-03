@@ -1,3 +1,6 @@
+'''
+Switches all open windows from one display to the other
+'''
 import win32con
 import win32gui
 import win32api
