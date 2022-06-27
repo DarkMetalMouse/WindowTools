@@ -37,7 +37,7 @@ def moveWindows(hwnd, extra):
             # window in 2nd screen
             ratios = ((SIZES[1][0] / SIZES[0][0]), (SIZES[0][1] / SIZES[1][1]))
             x = round((rect[0] - SIZES[1][0]) * ratios[0])
-        else:
+        elif rect[0] >= 0 - 8:
             # window in 1st screen
             ratios = ((SIZES[0][0] / SIZES[1][0]), (SIZES[1][1] / SIZES[0][1]))
             x = round((rect[0] * ratios[0]) + SIZES[0][0])
