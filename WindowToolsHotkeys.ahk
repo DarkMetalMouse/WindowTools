@@ -6,7 +6,7 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
 F13::
 ;^!Space::
-Run pythonw.exe "D:\programming\WindowTools\SwitchDisplays.pyw"
+Run pythonw.exe ".\SwitchDisplays.pyw"
 sleep, 250
 return
 
@@ -26,4 +26,8 @@ return
 F16::
 #y::  
 Winset, Alwaysontop, , A
+return
 
+^+Tab::
+
+Run ".\devmgmt.lnk"
